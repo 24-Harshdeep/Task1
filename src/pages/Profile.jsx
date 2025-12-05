@@ -24,7 +24,7 @@ const Profile = ({ user, onLogout }) => {
       <Navbar user={user} onLogout={onLogout} />
       <div className="flex flex-col md:flex-row">
         <Sidebar activeItem={'Profile'} setActiveItem={() => {}} />
-        <main className="flex-1 p-6">
+  <main className="flex-1 p-6 md:ml-64">
           <h2 className="text-2xl font-bold text-textPrimary mb-4">Profile</h2>
           <div className="bg-white rounded-xl shadow-md p-6 max-w-md">
             <Toast message={toast.message} type={toast.type} isVisible={toast.show} onClose={() => setToast({ ...toast, show: false })} />

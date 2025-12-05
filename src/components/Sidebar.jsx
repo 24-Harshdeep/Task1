@@ -25,6 +25,19 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
 
   if (resolvedIsMobile && !resolvedIsOpen) return null;
 
+  // determine navbar height so the sidebar can sit below it responsively
+  const [navHeight, setNavHeight] = useState(80);
+  useEffect(() => {
+    const update = () => {
+      const nav = document.querySelector('nav');
+      const h = nav ? Math.round(nav.getBoundingClientRect().height) : 80;
+      setNavHeight(h);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
   // Mobile: render a backdrop + sliding panel so clicking outside closes the panel
   if (resolvedIsMobile) {
     return (
@@ -35,7 +48,8 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="absolute top-20 inset-x-0 bottom-0 bg-black/30"
+          className="absolute inset-x-0 bottom-0 bg-black/30"
+          style={{ top: navHeight }}
           onClick={() => resolvedOnClose && resolvedOnClose()}
         />
         <motion.aside
@@ -43,7 +57,8 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -300, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-          className="relative bg-white shadow-lg w-64 p-6 mt-20"
+          className="relative bg-white shadow-lg w-64 p-6 overflow-auto"
+          style={{ top: navHeight, height: `calc(100vh - ${navHeight}px)` }}
         >
           {/* Close button removed — clicking outside/backdrop closes the panel */}
           <nav className="space-y-2">
@@ -78,7 +93,8 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
     <motion.aside
       initial={{ x: -20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      className="sticky top-20 h-[calc(100vh-5rem)] bg-white shadow-lg w-64 p-6"
+      className="fixed left-0 bottom-0 bg-white shadow-lg w-64 p-6 overflow-auto"
+      style={{ top: navHeight }}
     >
       <nav className="space-y-2">
         {navigationItems.map((item) => {

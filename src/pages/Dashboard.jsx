@@ -224,7 +224,7 @@ const Dashboard = ({ user, onLogout }) => {
         />
 
         
-        <main className="flex-1 p-6 space-y-6">
+  <main className="flex-1 p-6 space-y-6 md:ml-64">
           <div className="max-w-7xl mx-auto px-4">
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -342,8 +342,8 @@ const Dashboard = ({ user, onLogout }) => {
           </DashboardCard>
 
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <DashboardCard title="Quick Actions">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            <DashboardCard title="Quick Actions" className="mt-6">
               <div className="space-y-3">
                 {['File New Shipment', 'Generate Report', 'Track Shipment', 'Contact Support'].map((action, index) => (
                   <motion.button
@@ -361,7 +361,7 @@ const Dashboard = ({ user, onLogout }) => {
               </div>
             </DashboardCard>
 
-            <DashboardCard title="Recent Activity">
+            <DashboardCard title="Recent Activity" className="mt-6">
               <div className="space-y-4">
                 {[
                   { action: 'Shipment SH-003 updated', time: '5 min ago' },

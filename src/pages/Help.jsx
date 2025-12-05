@@ -23,7 +23,7 @@ const Help = ({ user, onLogout }) => {
       <Navbar user={user} onLogout={onLogout} />
       <div className="flex flex-col md:flex-row">
         <Sidebar activeItem={'Help & Adjust'} setActiveItem={() => {}} />
-        <main className="flex-1 p-6">
+  <main className="flex-1 p-6 md:ml-64">
           <h2 className="text-2xl font-bold text-textPrimary mb-4">Help & Adjust</h2>
           <div className="bg-white rounded-xl shadow-md p-6">
             <p className="text-textSecondary">Help articles, FAQs, and adjustment settings will appear here.</p>
