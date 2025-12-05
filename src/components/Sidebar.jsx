@@ -25,31 +25,17 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
 
   if (resolvedIsMobile && !resolvedIsOpen) return null;
 
-  // determine navbar height so the sidebar can sit below it responsively
-  const [navHeight, setNavHeight] = useState(80);
-  useEffect(() => {
-    const update = () => {
-      const nav = document.querySelector('nav');
-      const h = nav ? Math.round(nav.getBoundingClientRect().height) : 80;
-      setNavHeight(h);
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
   // Mobile: render a backdrop + sliding panel so clicking outside closes the panel
   if (resolvedIsMobile) {
     return (
       <div className="fixed inset-0 z-40 flex">
-        {/* Keep the top area (navbar) clear so sidebar doesn't overlap it */}
+        {/* backdrop covers entire viewport; clicking it closes the sidebar */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="absolute inset-x-0 bottom-0 bg-black/30"
-          style={{ top: navHeight }}
+          className="absolute inset-0 bg-black/30"
           onClick={() => resolvedOnClose && resolvedOnClose()}
         />
         <motion.aside
@@ -57,11 +43,10 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -300, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-          className="relative bg-white shadow-lg w-64 p-6 overflow-auto"
-          style={{ top: navHeight, height: `calc(100vh - ${navHeight}px)` }}
+          className="relative bg-white shadow-lg w-64 p-6 h-screen overflow-auto"
         >
           {/* Close button removed — clicking outside/backdrop closes the panel */}
-          <nav className="space-y-2">
+          <nav className="space-y-2 pt-20">
             {navigationItems.map((item) => {
               const isActive = location.pathname === item.path || activeItem === item.name;
               return (
@@ -88,15 +73,14 @@ const Sidebar = ({ activeItem, setActiveItem, isMobile, isOpen, onClose }) => {
     );
   }
 
-  // Desktop / large: sticky sidebar
+  // Desktop / large: fixed full-height sidebar
   return (
     <motion.aside
       initial={{ x: -20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      className="fixed left-0 bottom-0 bg-white shadow-lg w-64 p-6 overflow-auto"
-      style={{ top: navHeight }}
+      className="fixed left-0 top-0 bottom-0 bg-white shadow-lg w-64 p-6 h-screen overflow-auto z-30"
     >
-      <nav className="space-y-2">
+      <nav className="space-y-2 pt-20">
         {navigationItems.map((item) => {
           const isActive = location.pathname === item.path || activeItem === item.name;
           return (
