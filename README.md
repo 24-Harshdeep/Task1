@@ -204,7 +204,7 @@ Frontend Developer | MERN Stack Enthusiast
 ### ✅ **Submission Summary**
 
 * **GitHub Repo:** [https://github.com/24-Harshdeep/Task1.git]
-* **Live Demo:** [https://neximprove.netlify.app/]
+* **Live Demo:** [neximprove1.netlify.app]
 ## 📸 Screenshots
 
 ### 🔐 Login Page
