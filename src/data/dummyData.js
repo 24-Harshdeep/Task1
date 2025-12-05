@@ -1,0 +1,120 @@
+export const stats = [
+  {
+    id: 1,
+    title: 'Pending Shipments',
+    value: '24',
+    icon: '⏳',
+    color: 'warning',
+  },
+  {
+    id: 2,
+    title: 'Completed',
+    value: '156',
+    icon: '✓',
+    color: 'success',
+  },
+  {
+    id: 3,
+    title: 'In Progress',
+    value: '38',
+    icon: '🚢',
+    color: 'primary',
+  },
+  {
+    id: 4,
+    title: 'Total Filed',
+    value: '218',
+    icon: '📦',
+    color: 'secondary',
+  },
+];
+
+export const recentShipments = [
+  {
+    id: 'SH-001',
+    client: 'Tech Solutions Inc.',
+    origin: 'Shanghai, China',
+    destination: 'Los Angeles, USA',
+    status: 'In Progress',
+    date: '2025-12-01',
+    value: '$45,230',
+  },
+  {
+    id: 'SH-002',
+    client: 'Global Traders Ltd.',
+    origin: 'Hamburg, Germany',
+    destination: 'New York, USA',
+    status: 'Completed',
+    date: '2025-11-28',
+    value: '$78,450',
+  },
+  {
+    id: 'SH-003',
+    client: 'Pacific Imports Co.',
+    origin: 'Tokyo, Japan',
+    destination: 'Seattle, USA',
+    status: 'Pending',
+    date: '2025-12-03',
+    value: '$52,100',
+  },
+  {
+    id: 'SH-004',
+    client: 'Euro Logistics',
+    origin: 'Rotterdam, Netherlands',
+    destination: 'Miami, USA',
+    status: 'In Progress',
+    date: '2025-11-30',
+    value: '$63,890',
+  },
+  {
+    id: 'SH-005',
+    client: 'Asia Express LLC',
+    origin: 'Hong Kong',
+    destination: 'San Francisco, USA',
+    status: 'Completed',
+    date: '2025-11-25',
+    value: '$91,200',
+  },
+  {
+    id: 'SH-006',
+    client: 'Continental Shipping',
+    origin: 'Singapore',
+    destination: 'Houston, USA',
+    status: 'Pending',
+    date: '2025-12-04',
+    value: '$38,750',
+  },
+];
+
+export const navigationItems = [
+  {
+    id: 1,
+    name: 'Dashboard',
+    icon: '📊',
+    path: '/dashboard',
+  },
+  {
+    id: 2,
+    name: 'Shipments',
+    icon: '🚢',
+    path: '/shipments',
+  },
+  {
+    id: 3,
+    name: 'Profile',
+    icon: '👤',
+    path: '/profile',
+  },
+  {
+    id: 4,
+    name: 'Customers',
+    icon: '👥',
+    path: '/customers',
+  },
+  {
+    id: 5,
+    name: 'Help & Adjust',
+    icon: '🛠️',
+    path: '/help',
+  },
+];
