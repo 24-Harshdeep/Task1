@@ -130,7 +130,7 @@ src/
 
 ## 🧪 **Testing Instructions**
 
-1. Open deployed app: [**Live Demo Link**](your_deployed_link_here)
+1. Open deployed app: [**Live Demo Link**](https://neximprove.netlify.app/)
 2. **Login:** use any email (e.g., `test@example.com`) and password (min 6 chars)
 3. **Dashboard:** explore stat cards, shipments table, and modal
 4. **Error Handling:** try invalid credentials
